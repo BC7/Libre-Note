@@ -1,0 +1,100 @@
+body {
+    width: 275px;
+    height: 300px;
+    /* margin: 0px !important; */
+    /* padding: 0px; */
+    padding: 3px;
+    overflow-x: hidden;
+    background-color: #FFFACD
+}
+
+button {
+    background-color: inherit;
+    border: none;
+}
+
+button:hover {
+    background-color: #f5f2f0;
+}
+
+
+input,
+textarea {
+    background-color: #f5f2f0;
+    width: 100%;
+    font-family: 'Times New Roman', Times, serif;
+    border: none;
+    padding: 3px 0px 3px 5px;
+
+}
+
+input {
+    margin-bottom: 5px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+textarea {
+    min-height: 180px;
+    font-size: 18px;
+    resize: none;
+}
+
+#menu {
+    padding: 3px;
+    /* border-bottom: 1px solid black; */
+}
+
+#menu>a {
+    text-decoration: none;
+    color: black;
+}
+
+#nav-download,
+#nav-delete {
+    float: right;
+}
+
+#header {
+    border-bottom: 1px solid black;
+    margin-bottom: 5px;
+}
+
+#notes {
+    margin-bottom: 5px;
+}
+
+.hidden {
+    display: none;
+}
+
+.selection {
+    width: auto;
+    margin-right: 7px;
+}
+
+.note-entry {
+    border-bottom: 1px black solid;
+    display: inline-flex;
+    /* background-color: #f5f2f0; */
+    overflow-wrap: normal;
+    padding: 0px 10px 5px 10px;
+    margin: 0px;
+    width: 100%;
+    /* margin-bottom: 1px; */
+}
+
+.entry-title {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.entry-blurb {
+    font-size: 14px;
+    margin-left: 7px;
+}
+
+.entry-modified {
+    font-size: 12px;
+    color: darkgray;
+}

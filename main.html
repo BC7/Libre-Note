@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div id="menu">
+        <button id="nav-action" data-action="new">&plus; New</button>
+
+        <button id="nav-download" class="hidden">Download</button>
+        <button id="nav-delete" data-action="delete">Delete</button>
+    </div>
+    <h3 id="header">Notes</h3>
+    <div id="notes"></div>
+
+    <form id="note" class="hidden">
+        <input type="text" name="Title" id="note-title" placeholder="Title">
+        <textarea name="note" id="note-content" placeholder="Note"></textarea>
+    </form>
+    <script src="./app.js"></script>
+</body>
+
+</html>
