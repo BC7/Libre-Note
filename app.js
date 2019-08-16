@@ -57,7 +57,7 @@ downloadDOM.addEventListener("click", (e) => {
         const hours = `${(lastModified.getHours()<10?'0':'') + lastModified.getHours()}:${(lastModified.getMinutes()<10?'0':'') + lastModified.getMinutes()}`;
         const timeStamp = `${new Intl.DateTimeFormat('en-US', options).format(lastModified)}`;
 
-        const parsedNote = `\n ${timeStamp}\n ${hours} \n\n ${focusNote.title} \n\n ${focusNote.text}`;
+        const parsedNote = `\n${timeStamp} \n${hours} \n\nTitle: ${focusNote.title} \n\n\n${focusNote.text}`;
         downloadNote(parsedNote, `${focusNote.modified}.txt`, 'text/plain');
     } else {
         // ToDo: Download all of them (zip?)
