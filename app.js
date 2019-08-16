@@ -14,6 +14,9 @@ let noteContentDOM = document.querySelector("#note-content");
 noteTitleDOM.onchange = (e) => updateNote(e);
 noteContentDOM.onchange = (e) => updateNote(e);
 
+
+// NAV OPTIONS
+// Delete one/many note(s)
 deleteManyDOM.addEventListener("click", (e) => {
     const action = e.target.getAttribute("data-action");
 
@@ -24,6 +27,7 @@ deleteManyDOM.addEventListener("click", (e) => {
             navActionDOM.setAttribute('data-action', 'other');
             navActionDOM.click();
         } else {
+            // Render all notes and choose which to delete
             e.target.setAttribute('data-action', 'confirm');
             e.target.innerHTML = `Delete (<span id='d-count'>0</span>)`;
             navActionDOM.setAttribute('data-action', 'home');
@@ -31,6 +35,7 @@ deleteManyDOM.addEventListener("click", (e) => {
             renderNotes('delete');
         }
     } else {
+        // Delete selected notes and re-render list
         e.target.setAttribute('data-action', 'delete');
         e.target.textContent = "Delete";
 
@@ -40,14 +45,17 @@ deleteManyDOM.addEventListener("click", (e) => {
         deleteOptions.forEach(key => {
             browser.storage.local.remove(key.toString())
         })
+
         getAll();
     }
 })
 
+// Download note
 downloadDOM.addEventListener("click", (e) => {
     if (Object.keys(focusNote).length > 0) {
         // Download specific note
-        console.log('downloading note');
+
+        // Format time stamp
         const options = {
             month: 'short',
             day: '2-digit',
@@ -61,10 +69,10 @@ downloadDOM.addEventListener("click", (e) => {
         downloadNote(parsedNote, `${focusNote.modified}.txt`, 'text/plain');
     } else {
         // ToDo: Download all of them (zip?)
-        console.log('downloading archives');
     }
 })
 
+// New note/Cancel/Back action
 navActionDOM.addEventListener("click", (e) => {
     const action = e.target.getAttribute("data-action");
     focusNote = {};
@@ -101,15 +109,15 @@ navActionDOM.addEventListener("click", (e) => {
         getAll();
     }
 })
+// END NAV OPTIONS
 
 
-
+// Return Notes
 function getAll() {
     notes = [];
     browser.storage.local.get().then(res => {
         if (Object.keys(res).length > 0) {
             const entries = Object.keys(res);
-            // console.log(entries);
             entries.forEach(k => {
                 notes.push(res[k]);
             });
@@ -121,8 +129,8 @@ function getAll() {
 }
 
 
+// Render notes
 function renderNotes(layout) {
-    console.log(layout, notes);
     noteAreaDOM.textContent = "";
     if (notes.length > 0) {
         notes.forEach(item => {
@@ -156,7 +164,6 @@ function renderNotes(layout) {
             noteEntryDetailsDOM.appendChild(noteBlurbDOM);
             noteEntryDetailsDOM.appendChild(noteTimeDOM);
             noteEntryDetailsDOM.addEventListener('click', (e) => {
-                console.log(item);
                 deleteManyDOM.setAttribute('data-action', 'delete');
                 deleteManyDOM.textContent = `Delete`;
 
